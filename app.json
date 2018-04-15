@@ -1,0 +1,9 @@
+{
+  "expo": {
+    "sdkVersion": "26.0.0",
+    "facebookScheme" : "fb144817946357487",
+    "facebookId" : "144817946357487",
+    "facebookDisplayName" : "Mind Screen",
+    "bundleIdentifier" : "com.harrysolovay.mindscreen"
+  }
+}
