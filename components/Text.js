@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
 
   header : {
     fontFamily : 'FuturaLTBook',
-    fontSize : 20,
+    fontSize : 18,
     lineHeight : 24
   },
 

@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import { View, ScrollView, CheckBox } from 'react-native'
 import { BodyText, Touchable } from 'components'
 import { NavigationActions } from 'react-navigation'
+import { inject, observer } from 'mobx-react'
 import {
   fightFlightFreezeSystem,
   behavioralInhibitionSystem,
@@ -21,6 +22,8 @@ const statements = [
   ...impulsivity
 ]
 
+@inject('userStore')
+@observer
 class Contribute extends Component {
 
   state = {}
@@ -61,6 +64,14 @@ class Contribute extends Component {
               ))
             }
           </View>
+          <View style={{ flex : 1, padding : 15 }}>
+
+          <Touchable
+            onPress={ this._submitContribution }
+            style={{ borderWidth : 1, borderColor : '#4cadef', padding : 15, paddingBottom : 8, alignItems : 'center', marginTop : 10 }}
+          ><BodyText style={{ color : '#4cadef' }}>submit</BodyText>
+          </Touchable>
+          </View>
         </ScrollView>
         <Touchable
           style={{ paddingBottom : 30, paddingTop : 20, alignItems : 'center', justifyContent : 'center', borderTopWidth : 1, borderColor : '#ccc' }}
@@ -73,6 +84,14 @@ class Contribute extends Component {
         </Touchable>
       </View>
     )
+  }
+
+  _submitContribution = () => {
+    // console.log(this.props.userStore.user.id)
+    this.props.navigation.dispatch(NavigationActions.reset({
+      index : 0,
+      actions : [NavigationActions.navigate({ routeName : 'tabs' })]
+    }))
   }
 
 }

@@ -7,6 +7,7 @@ import XBar from 'react-native-x-bar'
 import * as firebase from 'firebase'
 import { inject } from 'mobx-react'
 import { NavigationActions } from 'react-navigation'
+import Picache from 'picache'
 
 @inject('userStore')
 class LogIn extends Component {
@@ -28,6 +29,9 @@ class LogIn extends Component {
   render() {
     return (
       <View style={{ flex : 1, flexDirection : 'column', justifyContent : 'center', alignItems : 'center' }}>
+
+        <Picache source={require('assets/logo.png')} imageResizeMode='contain' style={{ width : 150, height : 150 }} />
+        <BodyText style={{ fontSize : 20 }}>time to start the healing</BodyText>
         <XBar
           slots={[
             {
@@ -39,7 +43,7 @@ class LogIn extends Component {
             backgroundColor : '#3B5998',
             paddingTop : 12, paddingHorizontal : 15, paddingBottom : 6,
             alignSelf : 'stretch',
-            margin : 15
+            margin : 15, marginBottom : 0, marginTop : 30
           }}
           layout='space evenly'
           onPress={ this._logInWithFacebook }

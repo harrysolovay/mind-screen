@@ -4,6 +4,11 @@
     "facebookScheme" : "fb144817946357487",
     "facebookId" : "144817946357487",
     "facebookDisplayName" : "Mind Screen",
-    "bundleIdentifier" : "com.harrysolovay.mindscreen"
+    "bundleIdentifier" : "com.harrysolovay.mindscreen",
+    "icon" : "./assets/logo.png",
+    "githubUrl" : "https://github.com/harrysolovay/mind-screen",
+    "orientation" : "portrait",
+    "name" : "Mind Screen",
+    "description" : "(ROUGH APP PROTOTYPE) Become aware of how your specific app usage patterns can influence both your personality and promote both healthy and unhealthy behaviors"
   }
 }

@@ -51,7 +51,7 @@ class ImportData extends Component {
                 children : <BodyText>Step 2</BodyText>
               },
               {
-                children : <BodyText>Navigate to Batter > Last # Days</BodyText>,
+                children : <BodyText>Navigate to Battery > Last # Days</BodyText>,
                 overflow : {
                   effect : 'fade',
                   effectConfig : {
@@ -141,7 +141,6 @@ class ImportData extends Component {
 
   _pickScreenshot = async() => {
     const image = await ImagePicker.launchImageLibraryAsync()
-    this.setState({ image })
   }
 
 }

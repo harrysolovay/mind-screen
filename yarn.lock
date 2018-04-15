@@ -2271,6 +2271,10 @@ cssom@0.3.x, "cssom@>= 0.3.2 < 0.4.0":
   dependencies:
     cssom "0.3.x"
 
+"ctx-polyfill@github:lifaon74/ctx-polyfill":
+  version "1.1.4"
+  resolved "https://codeload.github.com/lifaon74/ctx-polyfill/tar.gz/f39f2d22be29dc87f211e1c363edb324bee173b4"
+
 d@1:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/d/-/d-1.0.0.tgz#754bb5bfe55451da69a58b94d45f4c5b0462d58f"
@@ -5337,6 +5341,10 @@ object.pick@^1.3.0:
   dependencies:
     isobject "^3.0.1"
 
+ocrad.js@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/ocrad.js/-/ocrad.js-0.0.1.tgz#cd9aa3e63171ebc315a0e0109b3c024b2a52248e"
+
 on-finished@~2.3.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/on-finished/-/on-finished-2.3.0.tgz#20f1336481b083cd75337992a16971aa2d906947"
@@ -5505,6 +5513,12 @@ parse-json@^2.2.0:
 parse5@4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/parse5/-/parse5-4.0.0.tgz#6d78656e3da8d78b4ec0b906f7c08ef1dfe3f608"
+
+parse5@^3.0.2:
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/parse5/-/parse5-3.0.3.tgz#042f792ffdd36851551cf4e9e066b3874ab45b5c"
+  dependencies:
+    "@types/node" "*"
 
 parseurl@~1.3.2:
   version "1.3.2"
@@ -5874,6 +5888,13 @@ react-native-calendars@^1.18.2:
   dependencies:
     prop-types "^15.5.10"
     xdate "^0.8.0"
+
+react-native-canvas@^0.1.20:
+  version "0.1.20"
+  resolved "https://registry.yarnpkg.com/react-native-canvas/-/react-native-canvas-0.1.20.tgz#8dbfbbdbc832c7e789614ca10d78e1814906fc87"
+  dependencies:
+    ctx-polyfill lifaon74/ctx-polyfill
+    parse5 "^3.0.2"
 
 react-native-charts@^3.0.0:
   version "3.0.0"

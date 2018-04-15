@@ -4,6 +4,8 @@ import { BodyText, Touchable } from 'components'
 import { View } from 'react-native'
 import * as firebase from 'firebase'
 import { NavigationActions } from 'react-navigation'
+import XBar from 'react-native-x-bar'
+import { Ionicons } from '@expo/vector-icons'
 
 class Account extends Component {
 
@@ -16,6 +18,31 @@ class Account extends Component {
         >
           <BodyText style={{ color : '#fff' }}>Log Out</BodyText>
         </Touchable>
+        <XBar
+          slots={[
+            {
+              children : <BodyText>About this app</BodyText>
+            },
+            {
+              children : (
+                <Ionicons
+                  name='ios-arrow-forward'
+                  zize={ 20 }
+                  color='#000'
+                  style={{ paddingBottom : 4 }}
+                />
+              )
+            }
+          ]}
+          layout='space between'
+          style={{
+            padding : 15, paddingBottom : 8,
+            borderWidth : 1,
+            borderColor : '#ccc',
+            margin : 15
+          }}
+          onPress={ () => this.props.navigation.navigate('about') }
+        />
       </View>
     )
   }

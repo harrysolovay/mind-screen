@@ -7,28 +7,37 @@ import XBar from 'react-native-x-bar'
 import { Ionicons } from '@expo/vector-icons'
 import Modal from 'react-native-modalbox'
 import { ImportData } from 'screens'
+import { Notifications, Constants, Permissions } from 'expo'
 
 class Calendar extends Component {
 
   constructor(props) {
 
     super(props)
-    
-    const d = new Date()
 
     this.state = {
-      today : `${ d.getFullYear() }-${ this._formatDayOrMonth(d.getMonth() + 1) }-${ this._formatDayOrMonth(d.getDate()) }`,
       reminders : true,
       remindersToggled : false,
-      importingData : false
+      importingData : false,
+      aWeekFromNow : '04-22-2018'
     }
 
-  }
+    let t = new Date();
+    t.setSeconds(t.getSeconds() + 604800);
 
-  _formatDayOrMonth = (value) => {
-    return value.toString().length < 2
-      ? `0${value}`
-      : value
+    Notifications.scheduleLocalNotificationAsync({
+      title : 'Import your app usage data',
+      body : `It's been a whole week! Please import your app usage data so that we can provide you with valuable insights into your psyche.`,
+      ios : {
+        sound : true
+      },
+      priority : 'high',
+      vibrate : true
+    }, {
+      time : t,
+      repeat : 'week'
+    })
+
   }
 
   render() {
@@ -46,7 +55,10 @@ class Calendar extends Component {
               slots={[
                 {
                   children : <BodyText style={{ color : this.state.reminders ? '#000' : '#4cadef' }}>NO</BodyText>,
-                  onPress : () => this.setState({ reminders : false, remindersToggled : true })
+                  onPress : () => {
+                    this.setState({ reminders : false, remindersToggled : true })
+                    Notifications.cancelAllScheduledNotificationsAsync()
+                  }
                 },
                 {
                   children : <BodyText style={{ color : this.state.reminders ? '#4cadef' : '#000' }}>YES</BodyText>,
@@ -77,13 +89,13 @@ class Calendar extends Component {
               }}
               current={ this.state.today }
               firstDay={1}
-              markedDates={{
-                '2012-05-23': {selected: true, marked: true},
-                '2012-05-24': {selected: true, marked: true, dotColor: 'green'},
-                '2012-05-25': {marked: true, dotColor: 'red'},
-                '2012-05-26': {marked: true},
-                '2012-05-27': {disabled: true, activeOpacity: 0}
-              }}
+              markedDates={
+                this.state.reminders ? {
+                  '2018-04-22' : {marked: true, dotColor: 'green'},
+                  '2018-04-29' : {marked: true, dotColor: 'green'},
+                  '2018-05-06' : {marked: true, dotColor: 'green'}
+                } : null
+              }
               // disabledByDefault={true}
               hideArrows={true}
             />
@@ -100,6 +112,10 @@ class Calendar extends Component {
         </Modal>
       </View>
     )
+  }
+
+  async componentDidMount() {
+    let result = await Permissions.askAsync(Permissions.NOTIFICATIONS)
   }
 
 }
